@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 const CRUDComponent = () => {
   const [inputs, setInputs] = useState({
     name: "",
@@ -46,25 +47,29 @@ const CRUDComponent = () => {
     setEditIndex(index);
   };
   return (
-    <div className="min-h-screen bg-[#004b43]">
-      <h1 className="text-center">Crud App</h1>
-      <div className="bg-[#e5e4e4] max-w-fit m-auto p-10">
+    <div align="center">
+      <h1>CRUD Operations</h1>
+      <br />
+      <div>
         <form onSubmit={handleSubmit}>
-          <div className="flex flex-col">
-            <label>Name</label>
+          <div>
+            <label>Name: </label>
             <input name="name" value={inputs.name} onChange={handleChange} />
           </div>
-          <div className="flex flex-col">
-            <label>Email</label>
+          <br></br>
+          <div>
+            <label>Email: </label>
             <input name="email" value={inputs.email} onChange={handleChange} />
           </div>
+          <br />
           <button type="submit" className="w-full bg-[#014d64] text-white mt-3">
             {editClick ? "update" : "Add"}
           </button>
         </form>
       </div>
+      <br />
       <div>
-        <table className="w-full text-center">
+        <table style={{ width: "50%", textAlign: "center" }}>
           <thead>
             <tr>
               <th>Name</th>
@@ -72,7 +77,7 @@ const CRUDComponent = () => {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody className="text-white">
+          <tbody>
             {tableData.map((item, i) => (
               <tr>
                 <td>{item.name}</td>
@@ -83,7 +88,7 @@ const CRUDComponent = () => {
                     className="mr-3 text-yellow-300"
                   >
                     Edit
-                  </button>
+                  </button>{" "}
                   <button
                     onClick={() => handleDelete(i)}
                     className="text-red-500"
