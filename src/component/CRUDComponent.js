@@ -47,61 +47,86 @@ const CRUDComponent = () => {
     setEditIndex(index);
   };
   return (
-    <div align="center">
-      <h1>CRUD Operations</h1>
-      <br />
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Name: </label>
-            <input name="name" value={inputs.name} onChange={handleChange} />
-          </div>
-          <br></br>
-          <div>
-            <label>Email: </label>
-            <input name="email" value={inputs.email} onChange={handleChange} />
-          </div>
-          <br />
-          <button type="submit" className="w-full bg-[#014d64] text-white mt-3">
-            {editClick ? "update" : "Add"}
-          </button>
-        </form>
-      </div>
-      <br />
-      <div>
-        <table style={{ width: "50%", textAlign: "center" }}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableData.map((item, i) => (
+    <>
+      {/* <div textAlign="center">
+        <h2>CRUD operations</h2>
+      </div> */}
+      <div class="grid grid-cols-2 mt-5 p-4">
+        <div className="p-20">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label
+                for="Name"
+                class="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Name
+              </label>
+              <input
+                name="name"
+                value={inputs.name}
+                onChange={handleChange}
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+            <br></br>
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Email
+              </label>
+              <input
+                name="email"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
+                value={inputs.email}
+                onChange={handleChange}
+              />
+            </div>
+            <br />
+            <button
+              type="submit"
+              className="bg-[#014d64] text-white p-1 rounded-md w-full"
+            >
+              {editClick ? "update" : "Add"}
+            </button>
+          </form>
+        </div>
+        <div className="p-20">
+          <table class="w-full table-auto border-collapse border border-slate-400">
+            <thead>
               <tr>
-                <td>{item.name}</td>
-                <td>{item.email}</td>
-                <td>
-                  <button
-                    onClick={() => handleEdit(i)}
-                    className="mr-3 text-yellow-300"
-                  >
-                    Edit
-                  </button>{" "}
-                  <button
-                    onClick={() => handleDelete(i)}
-                    className="text-red-500"
-                  >
-                    Delete
-                  </button>
-                </td>
+                <th className="border border-slate-300">Name</th>
+                <th className="border border-slate-300">Email</th>
+                <th className="border border-slate-300">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="text-center">
+              {tableData.map((item, i) => (
+                <tr>
+                  <td className="border border-slate-300">{item.name}</td>
+                  <td className="border border-slate-300">{item.email}</td>
+                  <td className="border border-slate-300">
+                    <button
+                      onClick={() => handleEdit(i)}
+                      className="bg-[#014d64] text-white p-0 rounded-md w-20"
+                    >
+                      Edit
+                    </button>{" "}
+                    <button
+                      onClick={() => handleDelete(i)}
+                      className="bg-[#014d64] text-white p-0 rounded-md w-20"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
